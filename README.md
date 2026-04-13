@@ -1,16 +1,17 @@
-# Lin Group
+# Lin Group website
 
-Minimal Astro site for a privacy-focused investment firm placeholder homepage.
+Minimal institutional website for Lin Group.
 
-## Commands
+## Local development
 
-- `npm ci`
-- `npm run dev`
-- `npm run build`
-- `npm run preview`
-- `npm run test`
+```bash
+npm ci
+npm run dev
+```
 
-## Site
+## Build and deploy
 
-- Homepage: `/`
-- Not Found page: `/404`
+```bash
+npm run build
+npm run preview
+```
