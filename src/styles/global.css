@@ -32,10 +32,11 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Atkinson',
-    Helvetica, Arial, sans-serif;
+  font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.75;
   font-size: var(--text-base);
+  font-weight: 400;
+  letter-spacing: 0.005em;
   color: var(--color-text);
   background: var(--color-bg);
 }
@@ -54,14 +55,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
-  line-height: 1.28;
+  font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.24;
   margin-bottom: var(--space-sm);
 }
 
 h1 {
   font-size: var(--text-2xl);
-  font-weight: 600;
+  font-weight: 650;
 }
 
 p {
