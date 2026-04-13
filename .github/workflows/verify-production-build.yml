@@ -1,0 +1,46 @@
+name: Verify production build
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify-build-from-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site from source
+        run: npm run build
+
+      - name: Ensure dist is not tracked in git
+        run: |
+          if git ls-files | grep -q '^dist/'; then
+            echo 'Tracked dist artifacts found in git.'
+            exit 1
+          fi
+
+      - name: Validate production head metadata in built output
+        run: |
+          test -f dist/index.html
+          grep -q '<script type="application/ld+json">' dist/index.html
+          grep -q '"@type":"Organization"' dist/index.html
+          grep -q '<link rel="canonical" href="https://lingroup.us">' dist/index.html
+          grep -q '<meta name="robots" content="index, follow">' dist/index.html
+          grep -q '<link rel="icon" href="/favicon.png" type="image/png">' dist/index.html
+          grep -q '<meta property="og:type" content="website">' dist/index.html
+          grep -q '<meta property="og:url" content="https://lingroup.us">' dist/index.html
+          grep -q '<meta property="og:title" content="Lin Group">' dist/index.html
+          grep -q '<meta property="og:description" content="Private investment and holding company.">' dist/index.html
+          grep -q '<meta property="og:image" content="https://lingroup.us/og.png">' dist/index.html
