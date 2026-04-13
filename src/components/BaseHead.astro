@@ -4,7 +4,6 @@ import {
   SITE_TITLE,
   SITE_DESCRIPTION,
   SITE_URL,
-  SITE_OG_IMAGE,
   SITE_AUTHOR,
 } from "../consts";
 
@@ -43,7 +42,7 @@ const nextURL = resolveAbsoluteURL(relNext);
 
 const metaDescription = description || SITE_DESCRIPTION;
 
-let ogImage = new URL(SITE_OG_IMAGE, SITE_URL).toString();
+let ogImage = new URL("/og.png", SITE_URL).toString();
 if (image) {
   if (typeof image === "string") {
     ogImage = image.startsWith("http")
@@ -76,8 +75,8 @@ const organizationSchema = {
 {prevURL && <link rel="prev" href={prevURL} />}
 {nextURL && <link rel="next" href={nextURL} />}
 
-<link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="shortcut icon" href="/favicon.png" />
+<link rel="icon" href="/favicon.png" type="image/png" />
 
 <meta property="og:type" content={ogType} />
 <meta property="og:locale" content="en_US" />
@@ -86,5 +85,6 @@ const organizationSchema = {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={metaDescription} />
 <meta property="og:image" content={ogImage} />
+<meta name="twitter:image" content={ogImage} />
 
 <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
