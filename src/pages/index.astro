@@ -4,12 +4,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Lin Group"
-  description="Private holding and investment company."
+  description="Private investment and holding company."
   canonical="https://lingroup.us"
 >
   <section class="home">
     <h1>Lin Group</h1>
-    <p class="descriptor">Private holding and investment company.</p>
+    <p class="descriptor">Private investment and holding company.</p>
     <p>
       Lin Group engages in selective investments and related business activities
       across businesses, technology, and other assets.
@@ -20,24 +20,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <style>
   .home {
-    max-width: 34rem;
-    margin: clamp(4.5rem, 12vh, 8.5rem) auto clamp(4rem, 10vh, 7rem);
+    max-width: 41rem;
+    margin: clamp(5rem, 13vh, 9rem) auto clamp(4.5rem, 11vh, 7.5rem);
     text-align: left;
   }
 
   h1 {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.85rem;
     letter-spacing: 0.01em;
+    font-weight: 650;
   }
 
   .descriptor {
     color: var(--color-text-muted);
-    font-size: var(--text-md);
-    margin-bottom: 1.5rem;
+    font-size: 1.03rem;
+    line-height: 1.6;
+    margin-bottom: 1.7rem;
+  }
+
+  .home p {
+    max-width: 39rem;
   }
 
   .contact {
-    margin-top: 1.8rem;
+    margin-top: 2.1rem;
     margin-bottom: 0;
     font-size: var(--text-sm);
   }

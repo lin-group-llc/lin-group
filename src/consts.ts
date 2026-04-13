@@ -3,7 +3,7 @@
 
 export const SITE_TITLE = 'Lin Group';
 export const SITE_DESCRIPTION =
-  'Private holding and investment company.';
+  'Private investment and holding company.';
 export const SITE_URL = 'https://lingroup.us';
 export const SITE_AUTHOR = 'Lin Group LLC';
 
