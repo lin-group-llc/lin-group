@@ -18,10 +18,12 @@ const {
   relNext,
 } = Astro.props;
 
-// Ensure title follows pattern: 'Page — Lin Lib' or just 'Lin Lib'
-const finalTitle = title && (title.includes('—') || title.includes('|')) 
-  ? title 
-  : title ? `${title} — ${SITE_TITLE}` : SITE_TITLE;
+const normalizedTitle = title?.trim();
+const finalTitle = !normalizedTitle || normalizedTitle === SITE_TITLE
+  ? SITE_TITLE
+  : normalizedTitle.includes('—') || normalizedTitle.includes('|')
+    ? normalizedTitle
+    : `${normalizedTitle} — ${SITE_TITLE}`;
 
 const GA_ID = import.meta.env.PUBLIC_GA_ID;
 const isProd = import.meta.env.PROD;
@@ -65,23 +67,19 @@ const isProd = import.meta.env.PROD;
     }
   </head>
   <body>
-    <!-- Site Header (full width) -->
     <Header currentPath={Astro.url.pathname} />
-
-    <!-- Main content area (constrained width) -->
     <main class="page-main">
       <slot />
     </main>
-
-    <!-- Site Footer -->
     <Footer />
   </body>
 </html>
 
 <style>
   .page-main {
-    max-width: var(--max-content-width); /* ✅ use global variable */
-    margin: var(--space-lg) auto;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
     padding: 0 var(--space-md);
+    min-height: calc(100vh - 8.25rem);
   }
 </style>

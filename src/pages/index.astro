@@ -13,18 +13,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       Lin Group engages in selective investments and related business activities
       across businesses, technology, and other assets.
     </p>
-    <p>For inquiries: <a href="mailto:contact@lingroup.us">contact@lingroup.us</a></p>
+    <p class="contact"><a href="mailto:contact@lingroup.us">contact@lingroup.us</a></p>
   </section>
 </BaseLayout>
 
 <style>
   .home {
-    max-width: 40rem;
-    margin: var(--space-xl) auto;
+    max-width: 34rem;
+    margin: clamp(4.5rem, 12vh, 8.5rem) auto clamp(4rem, 10vh, 7rem);
+    text-align: left;
+  }
+
+  h1 {
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
   }
 
   .descriptor {
     color: var(--color-text-muted);
-    margin-bottom: var(--space-lg);
+    font-size: var(--text-md);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact {
+    margin-top: 1.8rem;
+    margin-bottom: 0;
+    font-size: var(--text-sm);
+  }
+
+  .contact a {
+    color: var(--color-text);
   }
 </style>
