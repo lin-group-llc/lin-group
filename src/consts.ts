@@ -4,7 +4,7 @@
 export const SITE_TITLE = 'Lin Group';
 export const SITE_DESCRIPTION =
   'Private holding and investment company.';
-export const SITE_URL = 'https://lingroup.us/';
+export const SITE_URL = 'https://lingroup.us';
 export const SITE_AUTHOR = 'Lin Group LLC';
 
 // Default Open Graph image.
