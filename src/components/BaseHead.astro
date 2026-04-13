@@ -10,7 +10,6 @@ import {
 const {
   title,
   description,
-  image,
   ogType = "website",
   canonical,
   relPrev,
@@ -18,7 +17,6 @@ const {
 } = Astro.props as {
   title: string;
   description?: string;
-  image?: string | { src: string };
   ogType?: string;
   canonical?: string;
   relPrev?: string;
@@ -42,22 +40,25 @@ const nextURL = resolveAbsoluteURL(relNext);
 
 const metaDescription = description || SITE_DESCRIPTION;
 
-let ogImage = new URL("/og.png", SITE_URL).toString();
-if (image) {
-  if (typeof image === "string") {
-    ogImage = image.startsWith("http")
-      ? image
-      : new URL(image, SITE_URL).toString();
-  } else if (typeof image === "object" && "src" in image) {
-    ogImage = new URL(image.src, SITE_URL).toString();
-  }
-}
-
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://lingroup.us/#organization",
   name: "Lin Group",
   url: "https://lingroup.us",
+  email: "contact@lingroup.us",
+  sameAs: ["https://leonlins.com"],
+  founder: { "@id": "https://leonlins.com/#person" },
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://leonlins.com/#person",
+  name: "Leon Lin",
+  url: "https://leonlins.com",
+  sameAs: ["https://leonlins.com"],
+  founderOf: { "@id": "https://lingroup.us/#organization" },
 };
 ---
 
@@ -82,9 +83,9 @@ const organizationSchema = {
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={SITE_TITLE} />
 <meta property="og:description" content={metaDescription} />
-<meta property="og:image" content={ogImage} />
-<meta name="twitter:image" content={ogImage} />
+<meta property="og:image" content={new URL("/og.png", SITE_URL).toString()} />
 
 <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
