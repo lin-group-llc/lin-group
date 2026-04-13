@@ -53,6 +53,13 @@ if (image) {
     ogImage = new URL(image.src, SITE_URL).toString();
   }
 }
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Lin Group",
+  url: "https://lingroup.us",
+};
 ---
 
 <meta charset="utf-8" />
@@ -79,3 +86,5 @@ if (image) {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={metaDescription} />
 <meta property="og:image" content={ogImage} />
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />

@@ -14,9 +14,6 @@ export default defineConfig({
     // @ts-expect-error - remarkFootnotes typing mismatch
     remarkPlugins: [[remarkFootnotes, { inlineNotes: true }]],
   },
-  redirects: {
-    '/newsletter': '/',
-  },
   vite: {
     plugins: [
       visualizer({
