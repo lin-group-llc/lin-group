@@ -47,18 +47,6 @@ const organizationSchema = {
   name: "Lin Group",
   url: "https://lingroup.us",
   email: "contact@lingroup.us",
-  sameAs: ["https://leonlins.com"],
-  founder: { "@id": "https://leonlins.com/#person" },
-};
-
-const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://leonlins.com/#person",
-  name: "Leon Lin",
-  url: "https://leonlins.com",
-  sameAs: ["https://leonlins.com"],
-  founderOf: { "@id": "https://lingroup.us/#organization" },
 };
 ---
 
@@ -88,4 +76,3 @@ const personSchema = {
 <meta property="og:image" content={new URL("/og.png", SITE_URL).toString()} />
 
 <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-<script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
