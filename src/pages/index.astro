@@ -1,5 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const investments = [
+  { name: 'Alongside', logo: '/investments/alongside.svg' },
+  { name: 'AngelList', logo: '/investments/angellist.svg' },
+  { name: 'Arcol', logo: '/investments/arcol.svg' },
+  { name: 'Badaboom', logo: '/investments/badaboom.svg' },
+  { name: 'Betr', logo: '/investments/betr.svg' },
+  { name: 'Break the Love', logo: '/investments/break-the-love.svg' },
+  { name: 'CareRev', logo: '/investments/carerev.svg' },
+  { name: 'Clever Harvest', logo: '/investments/clever-harvest.svg' },
+  { name: 'Cosy', logo: '/investments/cosy.svg' },
+  { name: 'Haus', logo: '/investments/haus.svg' },
+  { name: 'Infinity Constellation', logo: '/investments/infinity-constellation.svg' },
+  { name: 'MainStreet', logo: '/investments/mainstreet.svg' },
+  { name: 'Motion', logo: '/investments/motion.svg' },
+  { name: 'On Deck', logo: '/investments/on-deck.svg' },
+  { name: 'Pareto', logo: '/investments/pareto.svg' },
+  { name: 'Range', logo: '/investments/range.svg' },
+  { name: 'Rewind AI', logo: '/investments/rewind-ai.svg' },
+  { name: 'Secureframe', logo: '/investments/secureframe.svg' },
+  { name: 'The Essential', logo: '/investments/the-essential.svg' },
+];
 ---
 
 <BaseLayout
@@ -13,6 +35,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p>
       Lin Group engages in selective investments and related activities across technology, consumer, and other sectors.
     </p>
+  </section>
+
+  <section class="investments" aria-labelledby="investments-heading">
+    <h2 id="investments-heading">Select investments</h2>
+    <ul class="investment-grid" role="list">
+      {investments.map(({ name, logo }) => (
+        <li class="investment">
+          <div class="logo-wrap">
+            <img src={logo} alt="" width="64" height="64" loading="lazy" />
+          </div>
+          <span>{name}</span>
+        </li>
+      ))}
+    </ul>
   </section>
 </BaseLayout>
 
@@ -40,4 +76,65 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     max-width: 39rem;
   }
 
+  .investments {
+    margin: 0 auto clamp(5rem, 12vh, 8rem);
+  }
+
+  .investments h2 {
+    margin-bottom: 2.25rem;
+    font-size: var(--text-xl);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .investment-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    list-style: none;
+    gap: 2.75rem 1.75rem;
+  }
+
+  .investment {
+    min-width: 0;
+    text-align: center;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .logo-wrap img {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: contain;
+  }
+
+  .investment span {
+    display: block;
+    overflow-wrap: anywhere;
+    color: var(--color-text-muted);
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  @media (max-width: 42rem) {
+    .home {
+      margin-top: 4rem;
+      margin-bottom: 4.5rem;
+    }
+
+    .investment-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 27rem) {
+    .investment-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
 </style>
