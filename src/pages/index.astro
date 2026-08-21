@@ -1,5 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const investments = [
+  'Alongside',
+  'AngelList',
+  'Arcol',
+  'Badaboom',
+  'Betr',
+  'Break the Love',
+  'CareRev',
+  'Clever Harvest',
+  'Cosy',
+  'Haus',
+  'Infinity Constellation',
+  'MainStreet',
+  'Motion',
+  'On Deck',
+  'Pareto',
+  'Range',
+  'Rewind AI',
+  'Secureframe',
+  'The Essential',
+];
 ---
 
 <BaseLayout
@@ -13,6 +35,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p>
       Lin Group engages in selective investments and related activities across technology, consumer, and other sectors.
     </p>
+  </section>
+
+  <section class="investments" aria-labelledby="investments-heading">
+    <h2 id="investments-heading">Select investments</h2>
+    <ul class="investment-grid" role="list">
+      {investments.map((name) => <li class="investment">{name}</li>)}
+    </ul>
   </section>
 </BaseLayout>
 
@@ -40,4 +69,48 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     max-width: 39rem;
   }
 
+  .investments {
+    max-width: 41rem;
+    margin: 0 auto clamp(5rem, 12vh, 8rem);
+  }
+
+  .investments h2 {
+    margin-bottom: 1.5rem;
+    font-size: var(--text-base);
+    font-weight: 650;
+    letter-spacing: 0.01em;
+  }
+
+  .investment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    list-style: none;
+    gap: 0.8rem 2rem;
+  }
+
+  .investment {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 42rem) {
+    .home {
+      margin-top: 4rem;
+      margin-bottom: 4.5rem;
+    }
+
+    .investment-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 1rem;
+    }
+  }
+
+  @media (max-width: 27rem) {
+    .investment-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
